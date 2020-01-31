@@ -1,4 +1,4 @@
-# Gatsby 2.0 starter
+# Gatsby 2.0
 
 Movie catalog with GraphQL
 
