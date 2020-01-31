@@ -16,7 +16,7 @@ const IndexPage = (props) => {
 				<Card.Group style={{ justifyContent: "center" }}>
 					{props.data.movies.allMovies.results.map((movie) => {
 						return (<Card>
-							<Image src={`http://image.tmdb.org/t/p/w185/${movie.posterPath}`} wrapped ui={false} />
+							<img src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`} style={{ height: 350, width: 290 }} />
 							<Card.Content>
 								<Card.Header>{movie.title}</Card.Header>
 								<Card.Meta>
@@ -45,11 +45,7 @@ query {
       posterPath
       id            
 		voteAverage     
-		overview 
-      crew(departments: directing) {
-        job
-        name 
-      }
+		overview       
     }
   }
 }
