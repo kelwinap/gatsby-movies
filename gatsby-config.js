@@ -1,5 +1,6 @@
 /* eslint-disable quotes */
 module.exports = {
+  pathPrefix: "/gatsby-movies",
   siteMetadata: {
     title: `My website`,
     googleVerification: `abcdefz`,
@@ -17,20 +18,6 @@ module.exports = {
         path: `${__dirname}/data`
       }
     },
-
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true
-      }
-    },
-
     // Parse all markdown files (each plugin add/parse some data into graphQL layer)
     {
       resolve: `gatsby-transformer-remark`,

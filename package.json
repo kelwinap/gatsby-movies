@@ -5,17 +5,10 @@
   "author": "fabien0102 <fabien0102@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "lint": "npm run lint:ts && npm run lint:md && npm run lint:js && npm run lint:css",
-    "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
-    "lint:md": "remark .",
-    "lint:js": "xo",
-    "lint:css": "stylelint \"src/**/*.css\"",
-    "lint:scss": "stylelint src/**/*.scss --syntax scss",
-    "test": "npm run lint && jest",
-    "test:watch": "jest --watch",
     "generate": "plop --plopfile ./generators/plopfile.js",
     "graphql-types": "graphql-codegen --config ./graphql-config.yml",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -46,6 +39,7 @@
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.3.6",
+    "gh-pages": "^2.2.0",
     "gray-matter": "^4.0.2",
     "lodash": "^4.17.15",
     "react": "^16.8.6",
@@ -114,84 +108,5 @@
   "keywords": [
     "gatsby",
     "starter"
-  ],
-  "jest": {
-    "globals": {
-      "__LINK_PREFIX__": "",
-      "__PREFIX_LINKS__": ""
-    },
-    "transform": {
-      ".(ts|tsx)": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/public/",
-      "/templates/",
-      "/.cache"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx"
-    ],
-    "collectCoverage": true,
-    "coverageReporters": [
-      "lcov",
-      "text",
-      "html"
-    ]
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "tslint --fix",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "xo --fix",
-      "git add"
-    ],
-    "*.md": [
-      "node tools/update-post-date.js",
-      "remark -o",
-      "git add"
-    ],
-    "*.css": [
-      "stylelint"
-    ]
-  },
-  "xo": {
-    "extends": "xo-react/space",
-    "space": true,
-    "rules": {
-      "no-case-declarations": 0,
-      "default-case": 0
-    },
-    "ignores": [
-      "**/*.tsx",
-      "**/*.ts"
-    ]
-  },
-  "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended",
-      "remark-frontmatter"
-    ]
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm test"
-    }
-  }
+  ]
 }
