@@ -2,7 +2,7 @@
 
 Movie catalog with GraphQL
 
-Demo: <https://kelwinap.github.io/gatsby-movies/
+Demo: https://kelwinap.github.io/gatsby-movies/
 
 
 
