@@ -1,11 +1,10 @@
 {
     "compilerOptions": {
         "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
+        "sourceMap": true,        
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "allowJs": true,
+        "allowJs": true,        
         "module": "commonjs",
         "target": "esnext",
         "jsx": "react",

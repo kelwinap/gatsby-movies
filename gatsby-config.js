@@ -75,6 +75,17 @@ module.exports = {
         display: `minimal-ui`
       }
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "movies",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "movies",
+        // Url to query from
+        url: "https://tmdb-graphql.com/"
+      }
+    },
     /* eslint-enable camelcase */
 
     // This plugin generates a service worker and AppShell

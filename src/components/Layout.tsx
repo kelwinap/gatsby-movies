@@ -29,31 +29,10 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <Provider store={store}>
-      <Sidebar.Pushable as={Segment}>
-
-        <SidebarMenu Link={Link} pathname={pathname} items={menuItems} visible={false} />
-
-        <Sidebar.Pusher style={{ minHeight: "100vh" }}>
-          {/* Header */}
-          {isHome ? null : <HeaderMenu
-            Link={Link}
-            pathname={pathname}
-            items={menuItems}
-          />}
-
-          {/* Render children pages */}
-          <div style={{ paddingBottom: 60 }}>
-            {props.children}
-          </div>
-
-          {/* Footer */}
-          <Segment inverted vertical style={{ position: "absolute", bottom: 0, width: "100%" }}>
-            <Container textAlign="center">
-              <p>Powered with <Icon name="heart" /> by Gatsby 2.0</p>
-            </Container>
-          </Segment>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+      {/* Render children pages */}
+      <div>
+        {props.children}
+      </div>
     </Provider>
   );
 };

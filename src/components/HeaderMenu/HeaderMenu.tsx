@@ -1,32 +1,44 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { toggleSidebar } from "../../store";
-import { Container, Menu, Icon } from "semantic-ui-react";
-import { MenuProps } from "../Menu";
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import { Icon } from "semantic-ui-react";
 
-interface HeaderMenuProps extends MenuProps {
-  dispatch?: Dispatch<any>;
-  inverted?: boolean;
-}
+const Header = ({ siteTitle }) => (
+  <header
+    style={{
+      background: `rebeccapurple`,
+      marginBottom: `1.45rem`,
+    }}
+  >
+    <div
+      style={{
+        margin: ``,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`,
+      }}
+    >
+      <h1 style={{ margin: 0 }}>
+        <Link
+          to="/"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}
+        >
+          <Icon name="film" />
+          Movies
+        </Link>
+      </h1>
+    </div>
+  </header>
+);
 
-export const HeaderMenu = ({ items, pathname, Link, inverted, dispatch }: HeaderMenuProps) =>
-  <Container>
-    <Menu size="large" pointing secondary inverted={inverted}>
-      <Menu.Item as="a" className="mobile only" icon="sidebar" onClick={() => dispatch && dispatch(toggleSidebar())} />
-      <Menu.Item className="mobile hidden"><Icon name="spy" size="big" /></Menu.Item>
-      {items.map((item) => {
-        const active = (item.exact) ? pathname === item.path : pathname.startsWith(item.path);
-        return <Menu.Item
-          as={Link}
-          className="mobile hidden"
-          name={item.name}
-          to={item.path}
-          key={item.path}
-          active={active}
-        />;
-      })}
-    </Menu>
-  </Container>;
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+};
 
-export default connect()(HeaderMenu);
+Header.defaultProps = {
+  siteTitle: ``,
+};
+
+export default Header;
