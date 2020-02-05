@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-pages-movie-tsx","path":"/movie/","result":{"errors":[{"message":"Variable \"$movieId\" of required type \"ID!\" was not provided.","locations":[{"line":1,"column":19}]}],"pageContext":{}}}
