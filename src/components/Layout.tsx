@@ -1,11 +1,9 @@
-import { Link } from "gatsby";
+
 import * as React from "react";
-import HeaderMenu from "./HeaderMenu/HeaderMenu";
-import SidebarMenu from "./SidebarMenu/SidebarMenu";
-import { Segment, Icon, Container, Sidebar } from "semantic-ui-react";
 import "../css/styles.css";
 import "../css/responsive.css";
 import "../css/semantic.min.css";
+import "../css/global.css"
 import "prismjs/themes/prism-okaidia.css";
 import { Provider } from "react-redux";
 import { store } from "../store";

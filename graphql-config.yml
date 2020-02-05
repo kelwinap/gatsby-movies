@@ -7,6 +7,6 @@ generates:
     config:
       namingConvention: keep
     plugins:
-      - add: // tslint:disable
+      - add: tslint:disable
       - "typescript"
 require: []
