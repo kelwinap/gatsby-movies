@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withLayout } from "../components/Layout";
-import { Grid, Image } from 'semantic-ui-react'
-import { StaticQuery, graphql } from "gatsby"
+import { Grid, Image, Embed } from 'semantic-ui-react'
+import { graphql } from "gatsby"
 
 const MoviesPage = (props) => {
 
@@ -11,15 +11,29 @@ const MoviesPage = (props) => {
         return (
             <div>
                 <Grid style={{ marginTop: 50 }} textAlign='center'>
-                    <Grid.Column textAlign="center" mobile={12} tablet={12} computer={4} verticalAlign='bottom' >
-                        <Image centered style={{ height: 300, width: 220, borderRadius: 5 }} src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`} />
-                    </Grid.Column>
-                    <Grid.Column mobile={12} tablet={12} computer={8}>
-                        <h1 style={{ color: "#454569", fontWeight: 'bold', textAlign: 'left' }}>{movie.title}</h1>
-                        <p style={{ color: "#BEBEC2", textAlign: 'left' }}>{movie.releaseDate}</p>
-                        <p style={{ color: "#BEBEC2", textAlign: 'left' }}>Rating: {movie.voteAverage}</p>
-                        <p style={{ color: "#BEBEC2", textAlign: 'left' }}>{movie.overview}</p>
-                    </Grid.Column>
+                    <Grid.Row>
+                        <Grid.Column verticalAlign="top" textAlign="center" mobile={12} tablet={12} computer={4}  >
+                            <Image centered style={{ height: 330, width: 220, borderRadius: 5 }} src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`} />
+                        </Grid.Column>
+                        <Grid.Column mobile={12} tablet={12} computer={8}>
+                            <h1 style={{ color: "#454569", fontWeight: 'bold', textAlign: 'left' }}>{movie.title}</h1>
+                            <p style={{ color: "#BEBEC2", textAlign: 'left' }}>{movie.releaseDate}</p>
+                            <p style={{ color: "#BEBEC2", textAlign: 'left' }}>Rating: {movie.voteAverage}</p>
+                            <p style={{ color: "#BEBEC2", textAlign: 'left' }}>{movie.overview}</p>
+                            {movie.videos[0].key &&
+                                <Grid.Row>
+                                    <Grid.Column textAlign="center" mobile={12} tablet={12} computer={12} verticalAlign='bottom' >
+                                        <Embed
+                                            active
+                                            autoplay
+                                            id={movie.videos[0].key}
+                                            source='youtube'
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
+                            }
+                        </Grid.Column>
+                    </Grid.Row>
                 </Grid>
             </div>
         );
@@ -42,6 +56,10 @@ query MoviesQuery($movieId: ID!){
             id            
             voteAverage     
             overview
+            videos(type: TRAILER) {
+                key
+                site
+            }
         }  
     }
 }`;
