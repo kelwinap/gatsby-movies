@@ -7,7 +7,7 @@ exports.createPages = async({ graphql, actions }) => {
 
     const moviePost = path.resolve(`./src/templates/movie.tsx`)
 
-    const result = await graphql(`query {
+    const resultPageOne = await graphql(`query {
                                         movies {
                                             allMovies(page: 1) {      
                                                 results {
@@ -22,7 +22,34 @@ exports.createPages = async({ graphql, actions }) => {
                                         }
                                     }`)
 
-    const movies = result.data.movies.allMovies.results;
+    const resultPageTwo = await graphql(`query {
+                                        movies {
+                                            allMovies(page: 2) {      
+                                                results {
+                                                        title
+                                                        releaseDate
+                                                        posterPath
+                                                        id            
+                                                        voteAverage     
+                                                        overview       
+                                                }
+                                            }
+                                        }
+                                    }`)
+
+    let movies = resultPageOne.data.movies.allMovies.results;
+
+    movies.forEach((movie, index) => {
+        createPage({
+            path: `/movie/${movie.id}/`,
+            context: {
+                movieId: movie.id
+            },
+            component: moviePost
+        })
+    })
+
+    movies = resultPageTwo.data.movies.allMovies.results;
 
     movies.forEach((movie, index) => {
         createPage({

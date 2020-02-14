@@ -20,7 +20,7 @@ const MoviesPage = (props) => {
                             <p style={{ color: "#BEBEC2", textAlign: 'left' }}>{movie.releaseDate}</p>
                             <p style={{ color: "#BEBEC2", textAlign: 'left' }}>Rating: {movie.voteAverage}</p>
                             <p style={{ color: "#BEBEC2", textAlign: 'left' }}>{movie.overview}</p>
-                            {movie.videos[0].key &&
+                            {movie.videos.length > 0 &&
                                 <Grid.Row>
                                     <Grid.Column textAlign="center" mobile={12} tablet={12} computer={12} verticalAlign='bottom' >
                                         <Embed
@@ -28,6 +28,10 @@ const MoviesPage = (props) => {
                                             autoplay
                                             id={movie.videos[0].key}
                                             source='youtube'
+                                            iframe={{
+                                                allowFullScreen: true,
+                                                style: {},
+                                            }}
                                         />
                                     </Grid.Column>
                                 </Grid.Row>
