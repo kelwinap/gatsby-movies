@@ -37,7 +37,7 @@
     "gatsby-source-filesystem": "^2.0.37",
     "gatsby-source-graphql": "^2.1.32",
     "gatsby-transformer-json": "^2.1.11",
-    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-remark": "^6.15.0",
     "gatsby-transformer-sharp": "^2.3.6",
     "gh-pages": "^2.2.0",
     "gray-matter": "^4.0.2",
