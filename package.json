@@ -46,7 +46,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "5.2.1",
     "react-redux": "^7.0.3",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "redux-devtools-extension": "^2.13.8",
     "semantic-ui-react": "^0.87.1",
     "slash": "3.0.0",
